@@ -1,0 +1,40 @@
+# Programa: Comparadores.py
+# Objetivo: Definir una serie de comparadores para la Lista Ordenada
+# Autor: Gerardo
+# Fecha: 11-09-2024
+
+from Persona import *
+
+def nombre_ascendente(a: Persona, b: Persona):
+    """
+    Método para determinar la relación de los Empleados con respecto al nombre
+    :param a: El primer Empleado a comparar
+    :param b: El segundo Empleado a comparar
+    :return: Valor positivo si el nombre de a es mayor que b, negativo si el nombre de
+             b es mayo que a. Si es el mismo nombre, no hace nada.
+    """
+    if a == b:
+        return 0
+    elif a is None:
+        return -1
+    elif b is None:
+        return 1
+    else:
+        fullname1 = a.nombre + " " + a.apellidos
+        fullname2 = b.nombre + " " + b.apellidos
+        return __compare_strings(fullname1, fullname2)
+
+
+def __compare_strings(str1: str, str2: str) -> int:
+    """
+    Método privado para comparar dos cadenas y devolver su relación de orden en términos de un int
+    :param str1: Primera cadena a comparar
+    :param str2: Segunda cadena a comparar
+    :return: -1 si str1 lexicográficamente es menor que str2, 0 si son iguales, 1 en otro caso
+    """
+    if str1 < str2:
+        return -1
+    elif str1 > str2:
+        return 1
+    else:
+        return 0
